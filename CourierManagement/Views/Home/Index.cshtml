@@ -1,0 +1,97 @@
+﻿@model IEnumerable<CourierManagement.Models.OrderList>
+
+
+
+<br /><br />
+
+      <div>
+          your Trackid Number : 
+      </div>
+
+
+    
+    <div class="row">
+
+        <div class="col-12 align-content-center" align="center">
+
+            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+            {
+                @Html.TextBox("Searching","", new { @class = "form-control" })
+                <input type="submit" id="txtSearchBox" class="btn btn-light" value="Search" />
+            }
+
+        </div>
+
+
+        <br />
+
+        <div class="col-12" align="center">
+            <br />
+
+            @if (ViewBag.SearchAlert != null)
+            {
+                <h3 class="text-danger">Nothing Found</h3>
+            }
+            else
+            {
+                <p></p>
+            }
+
+            <br />
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <table class="table table-responsive-lg table-hover">
+                <thead>
+                    <tr>
+                        <th>Track ID</th>
+                        <th>Order date</th>
+                        <th>delivery date</th>
+                        <th>Current Location</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="3" style="color:red"></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.TrackID</td>
+                                <td>@item.OrderDate.Value.ToString("MM/dd/yyyy")</td>
+                                <td>@(item.DeliveryDate.HasValue ? item.DeliveryDate.Value.ToString("dd/MM/yyyy") : "Not Available")</td>
+
+                                <td>@item.CurrentLocation</td>
+                                <td>@item.Status</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+

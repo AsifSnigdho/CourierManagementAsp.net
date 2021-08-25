@@ -1,0 +1,126 @@
+﻿@model IEnumerable<CourierManagement.Models.OrderList>
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<br /><br />
+
+
+
+<div class="row">
+
+    <div class="col-12 align-content-center" align="center">
+
+        @using (Html.BeginForm("SuccededLogin", "Admin", FormMethod.Get))
+        {
+            @Html.TextBox("List", "", new { @class = "form-control" })
+            <input type="submit" id="txtSearchBox" class="btn btn-light" value="Search" />
+        }
+
+    </div>
+
+
+    <br />
+
+    <div class="col-12" align="center">
+        <br />
+
+        @if (ViewBag.SearchAlert != null)
+        {
+            <h3 class="text-danger">Nothing Found</h3>
+        }
+        else
+        {
+            <p></p>
+        }
+
+        <br />
+
+    </div>
+
+
+</div>
+
+ @Html.ActionLink("Generate Report", "GenerateReport")
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TrackID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerPhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceiverName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceiverPhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceiverAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentLocation)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.TrackID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CustomerName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CustomerPhoneNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ReceiverName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ReceiverPhoneNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ReceiverAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DeliveryDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CurrentLocation)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.TrackID }) |
+        
+        
+    </td>
+</tr>
+    }
+
+</table>

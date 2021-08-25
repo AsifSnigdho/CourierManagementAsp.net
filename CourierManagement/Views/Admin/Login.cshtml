@@ -1,0 +1,51 @@
+﻿@model CourierManagement.Models.Admin
+
+@{
+    ViewBag.Title = "Login";
+}
+<br />
+<br />
+<body>
+    <div id="login-div">
+        @using (Html.BeginForm(FormMethod.Post))
+        {
+        <center>
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(model => model.UserName)</td>
+                    <td>@Html.EditorFor(model => model.UserName)</td>
+                    <td></td>
+                </tr>
+                <tr>
+
+                    <td> @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Password)</td>
+                    <td>@Html.PasswordFor(model => model.Password)</td>
+                    <td></td>
+                </tr>
+                <tr>
+
+                    <td> @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label></td>
+                    
+                </tr>
+                <tr>
+                    <td><button type="submit" class="btn btn-success" > Log In</button></td>
+                    <td><input type="reset" class="btn btn-danger" name="name" value="Clear" /></td>
+                </tr>
+            </table>
+        </center>
+        }
+    </div>
+</body>
+
+
+
